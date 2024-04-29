@@ -55,7 +55,7 @@ Pasos para la ejecución del proyecto.
 
 1. Clonar el repositorio
    ```sh
-   git clone https://github.com/CristianCastellanos22/AppRecetas.git
+   git clone https://github.com/CristianCastellanos22/WeatherApiExample.git
    ```
 2. Abrir con el IDE Android Studio
 3. El proyecto requiere Java JDK 17.
