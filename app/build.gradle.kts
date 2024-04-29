@@ -1,7 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
+
+val url = "\"https://api.weatherapi.com/v1/\""
+val baseUrl = "BASE_URL"
+val type = "String"
+val key = "\"de5553176da64306b86153651221606\""
+val apiKey = "API_KEY"
 
 android {
     namespace = "com.example.cristian.weatherapiexample"
@@ -27,17 +35,24 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField(type, baseUrl, url)
+            buildConfigField(type, apiKey, key)
+        }
+        debug {
+            buildConfigField(type, baseUrl, url)
+            buildConfigField(type, apiKey, key)
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -59,6 +74,21 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    //Navigation
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+    //Location
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+    //LiveData
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.0")
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
