@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.cristian.weatherapiexample.R
 import com.example.cristian.weatherapiexample.domain.models.CityUI
@@ -54,7 +55,7 @@ fun SearchBar(
                 cityViewModel.searchCity(query)
                 citySelected = false
             },
-            label = { Text("Buscar") },
+            label = { Text(stringResource(id = R.string.search)) },
             singleLine = true,
             modifier = modifier,
             trailingIcon = {
@@ -65,7 +66,7 @@ fun SearchBar(
                         suggestions = listOf()
                         focusManager.clearFocus()
                     }) {
-                        Icon(Icons.Default.Close, contentDescription = "Borrar texto")
+                        Icon(Icons.Default.Close, contentDescription = stringResource(id = R.string.delete_text))
                     }
                 }
             }
@@ -94,7 +95,7 @@ fun SearchBar(
             if (suggestions.isEmpty() && query.isNotEmpty() && !citySelected) {
                 item {
                     Text(
-                        text = "No se encontraron resultados",
+                        text = stringResource(id = R.string.not_found),
                         modifier = Modifier.padding(8.dp)
                     )
                 }

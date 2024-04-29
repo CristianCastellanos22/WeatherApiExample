@@ -11,4 +11,7 @@
     <string name="avg">Avg %s °C</string>
     <string name="celsius">%s °C</string>
     <string name="path">https:%s</string>
+    <string name="search">Buscar</string>
+    <string name="not_found">No se encontraron resultados</string>
+    <string name="delete_text">Borrar text</string>
 </resources>
