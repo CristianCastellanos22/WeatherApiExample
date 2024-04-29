@@ -17,12 +17,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.ActivityCompat
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.cristian.weatherapiexample.ui.theme.Routes.SearchCity
 import com.example.cristian.weatherapiexample.ui.theme.WeatherApiExampleTheme
-import com.example.cristian.weatherapiexample.ui.theme.presentation.HomeScreen
+import com.example.cristian.weatherapiexample.ui.theme.presentation.navigation.setupNavHost
 import com.example.cristian.weatherapiexample.ui.theme.viewmodels.CityViewModel
 import com.example.cristian.weatherapiexample.ui.theme.viewmodels.ForecastViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -51,23 +47,8 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
-                    setupNavHost()
+                    setupNavHost(forecastViewModel, cityViewModel)
                 }
-            }
-        }
-    }
-
-    @Composable
-    private fun setupNavHost() {
-        val navigationController = rememberNavController()
-        NavHost(
-            navController = navigationController, startDestination = SearchCity.route
-        ) {
-            composable(SearchCity.route) {
-                HomeScreen(
-                    forecastViewModel = forecastViewModel,
-                    cityViewModel = cityViewModel
-                )
             }
         }
     }
@@ -173,19 +154,4 @@ class MainActivity : ComponentActivity() {
         fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!", modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    WeatherApiExampleTheme {
-        Greeting("Android")
-    }
 }
