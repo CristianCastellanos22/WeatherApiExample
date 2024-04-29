@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">WeatherApiExample</string>
+    <string name="error_dialog_title">Oops, something happened!</string>
+    <string name="try_again">Try again</string>
+    <string name="location_permission_title">Permiso de ubicación necesario</string>
+    <string name="location_message_subtitle">Esta aplicación necesita el permiso de ubicación para obtener la ciudad en la que te encuentras. </string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="max">Max %s °C</string>
+    <string name="min">Min %s °C</string>
+    <string name="avg">Avg %s °C</string>
+    <string name="celsius">%s °C</string>
+    <string name="path">https:%s</string>
 </resources>
