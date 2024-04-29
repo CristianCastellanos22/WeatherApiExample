@@ -15,11 +15,11 @@ class ForecastViewModel @Inject constructor(private val searchForecastUseCase: S
 
     private val _status = MutableLiveData<ViewState>(ViewState.Loading)
     val status: LiveData<ViewState> get() = _status
-        fun searchForecast(query: String) {
-            viewModelScope.launch {
-                searchForecastUseCase.invoke(query)
-                    .onSuccess { _status.postValue(ViewState.Success(it)) }
-                    .onFailure { _status.postValue(ViewState.Error(it)) }
-            }
+    fun searchForecast(query: String) {
+        viewModelScope.launch {
+            searchForecastUseCase.invoke(query)
+                .onSuccess { _status.postValue(ViewState.Success(it)) }
+                .onFailure { _status.postValue(ViewState.Error(it)) }
         }
+    }
 }
